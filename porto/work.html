@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Achmad Rivaldi</title>
+<meta name="description" content="Case studies: a production job-application automation pipeline, and thesis research comparing IndoBERT and FLAN-T5 for Indonesian sentiment analysis.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="accent-strip"></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo"><span class="dot">$</span> rivaldi.ar</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html" class="active">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="section-tight">
+    <div class="wrap">
+      <p class="eyebrow">ls ./work</p>
+      <h1>Two projects, two proofs.</h1>
+      <p class="text-soft" style="max-width:600px;">One shows I can ship a system that runs unattended in production. The other shows I can do the research rigor behind it — honestly, including where it didn't work.</p>
+    </div>
+  </section>
+
+  <!-- ============ CASE STUDY 1: PIPELINE ============ -->
+  <section class="section case-study" id="pipeline">
+    <div class="wrap">
+      <div class="case-head">
+        <div>
+          <span class="tag tag-status">production</span>
+          <h2>Job Application Automation Pipeline</h2>
+          <p class="text-soft case-dek">A pipeline that scans job listings on Jobstreet, scores fit locally with an LLM, and notifies me on Telegram — running unattended, not a one-off script.</p>
+        </div>
+      </div>
+
+      <div class="case-meta">
+        <div class="meta-item">
+          <span class="meta-label">Stack</span>
+          <span class="meta-value">Playwright · Ollama (local LLM) · Telegram Bot API</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Actively running on Jobstreet</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Repo</span>
+          <span class="meta-value"><a href="https://github.com/Shoryuuuuuuu/job-automation" target="_blank" rel="noopener">github.com/Shoryuuuuuuu/job-automation ↗</a></span>
+        </div>
+      </div>
+
+      <div class="case-body">
+        <h3>How it works</h3>
+        <p>Playwright drives a real browser session against Jobstreet to find and read new listings. Each listing is scored for fit by an LLM running locally through Ollama — no data leaves the machine, no API cost per run. Listings that clear the bar trigger a Telegram notification, so the review step stays in my hands rather than fully auto-applying blind.</p>
+
+        <h3>What it reports — and what it deliberately doesn't</h3>
+        <p>The dashboard tracks two numbers: <strong>total jobs scanned</strong> and <strong>applications sent</strong>. It does not show win rate or interview outcomes. Those depend on employer-side decisions the system has no control over, so surfacing them here would overstate what the pipeline itself is responsible for.</p>
+
+        <div class="gallery-placeholder">
+          <p class="eyebrow">screenshot --pending</p>
+          <p class="text-soft">Pipeline dashboard and Telegram notification screenshots go here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASE STUDY 2: THESIS ============ -->
+  <section class="section case-study" id="thesis">
+    <div class="wrap">
+      <div class="case-head">
+        <div>
+          <span class="tag">research — pending defense</span>
+          <h2>Sentiment Analysis: IndoBERT vs FLAN-T5</h2>
+          <p class="text-soft case-dek">Undergraduate thesis comparing fine-tuning against prompt engineering for Indonesian-language sentiment analysis of ride-hailing app reviews.</p>
+        </div>
+      </div>
+
+      <div class="case-meta">
+        <div class="meta-item">
+          <span class="meta-label">Methods compared</span>
+          <span class="meta-value">IndoBERT fine-tuning vs. FLAN-T5 (zero-shot, few-shot, Chain-of-Thought)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Data</span>
+          <span class="meta-value">Reviews of Gojek, Grab, and Maxim</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Completed — pending final defense</span>
+        </div>
+      </div>
+
+      <div class="case-body">
+        <h3>Setup</h3>
+        <p>The question was whether prompting a general-purpose model can match a model fine-tuned specifically for Indonesian text. IndoBERT was fine-tuned directly on the review data. FLAN-T5 was tested with three prompting strategies — zero-shot, few-shot, and Chain-of-Thought — with no additional training.</p>
+
+        <h3>Result, and the honest root cause</h3>
+        <p>Few-shot and Chain-of-Thought prompting underperformed zero-shot — which runs against the usual assumption that more guidance helps. It wasn't a data imbalance issue. Two concrete causes stood out on inspection: the few-shot examples were written in English while the actual inputs were Indonesian, a language mismatch that likely confused the model's pattern-matching; and the output-parsing scheme expected an explicit "Final Answer" marker, which the model often didn't produce within the token limit — so correct reasoning sometimes got scored as a failed parse.</p>
+
+        <div class="gallery-placeholder">
+          <p class="eyebrow">charts --loading</p>
+          <p class="text-soft">Three result charts (accuracy by method, confusion matrix, per-platform breakdown) go here.</p>
+        </div>
+
+        <div class="callout">
+          <p class="eyebrow">note</p>
+          <p>An informal early test on few-shot Indonesian prompts wasn't logged, so it isn't cited as a finding here — it's flagged as a limitation for future work instead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight cta-band">
+    <div class="wrap cta-band-inner">
+      <h2>Want to talk about either of these?</h2>
+      <a href="contact.html" class="btn btn-primary">Get in touch →</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>Achmad Rivaldi — 2026</span>
+    <a href="contact.html">achmadrivaldizulfah@gmail.com</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
