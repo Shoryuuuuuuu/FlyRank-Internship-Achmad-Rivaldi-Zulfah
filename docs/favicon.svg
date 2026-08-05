@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="10" fill="#0A0A0A"/>
-  <rect x="0" y="0" width="64" height="7" fill="#2563EB"/>
-  <rect x="0" y="0" width="64" height="7" fill="#10B981" clip-path="polygon(70% 0, 78% 0, 78% 100%, 70% 100%)"/>
-  <text x="32" y="42" font-family="'JetBrains Mono', monospace" font-size="24" font-weight="700" fill="#FAFAFA" text-anchor="middle">AR</text>
-</svg>
