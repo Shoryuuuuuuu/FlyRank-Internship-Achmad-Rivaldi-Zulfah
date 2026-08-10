@@ -67,12 +67,10 @@
         <h3>How it works</h3>
         <p>Playwright drives a real browser session against Jobstreet to find and read new listings. Each listing is scored for fit by an LLM running locally through Ollama — no data leaves the machine, no API cost per run. Listings that clear the bar trigger a Telegram notification, so the review step stays in my hands rather than fully auto-applying blind.</p>
 
-        <h3>What it reports — and what it deliberately doesn't</h3>
-        <p>The dashboard tracks two numbers: <strong>total jobs scanned</strong> and <strong>applications sent</strong>. It does not show win rate or interview outcomes. Those depend on employer-side decisions the system has no control over, so surfacing them here would overstate what the pipeline itself is responsible for.</p>
-
+        <h3>What it reports — and what I actually claim</h3>
+<p>The bot's daily report logs five numbers: total listings scanned, applications sent, interviews, pending reviews, and win rate. Only the first two — <strong>total jobs scanned</strong> and <strong>applications sent</strong> — are claimed here as proof of what the pipeline does. Win rate and interview count depend on employer-side decisions the system has no control over, so I don't present them as a measure of the pipeline's performance, even though the bot logs them by default.</p>
         <div class="gallery-placeholder">
-          <p class="eyebrow">screenshot --pending</p>
-          <p class="text-soft">Pipeline dashboard and Telegram notification screenshots go here.</p>
+          <img src="assets/pipeline-telegram-report.png" alt="Laporan harian dari Telegram bot: total lowongan, aplikasi terkirim, interview, pending review, win rate" style="max-width:100%; border-radius:8px;">
         </div>
       </div>
     </div>
