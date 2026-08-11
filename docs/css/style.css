@@ -413,3 +413,20 @@ h1, h2, h3, h4 {
   font-family: var(--font-mono);
   font-size: 1.1rem;
 }
+.secondary-links {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  color: var(--text-soft, #888);
+}
+.secondary-links a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.secondary-links a:hover {
+  color: var(--accent, #10B981);
+}
+.secondary-links .sep {
+  margin: 0 8px;
+  opacity: 0.5;
+}
