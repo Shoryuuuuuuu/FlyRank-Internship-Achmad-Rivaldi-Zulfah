@@ -10,9 +10,58 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  /* --- form add-on styles, scoped to avoid clashing with style.css --- */
+  .contact-form { margin-top: 2rem; max-width: 480px; }
+  .contact-form .form-row { margin-bottom: 1.1rem; }
+  .contact-form label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.75;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid rgba(10,10,10,0.15);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    background: #fff;
+    box-sizing: border-box;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: 2px solid #2563EB;
+    outline-offset: 1px;
+  }
+  .contact-form button {
+    background: #2563EB;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .contact-form button:hover { opacity: 0.9; }
+  .contact-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+  #form-status { font-size: 0.85rem; margin-top: 0.75rem; min-height: 1.2em; }
+  .divider-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin: 2rem 0 1rem;
+  }
+</style>
 </head>
 <body>
+
 <div class="accent-strip"></div>
+
 <header class="site-header">
   <nav class="nav">
     <a href="index.html" class="logo"><span class="dot">$</span> rivaldi.ar</a>
@@ -25,38 +74,97 @@
     </ul>
   </nav>
 </header>
+
 <main>
-  <section class="section contact-section">
-    <div class="wrap contact-wrap">
-      <p class="eyebrow">./contact --now</p>
-      <h1>Let's talk.</h1>
-      <p class="text-soft contact-sub">If you're screening for an AI Engineer or AI Software Engineer role, I'd like to hear from you. One message is all it takes.</p>
-      <div class="contact-options">
-        <a href="https://wa.me/6281281229084" target="_blank" rel="noopener" class="contact-card">
-          <span class="meta-label">WhatsApp</span>
-          <span class="contact-value">+62 812-8122-9084</span>
-        </a>
-        <a href="mailto:achmadrivaldizulfah@gmail.com" class="contact-card">
-          <span class="meta-label">Email</span>
-          <span class="contact-value">achmadrivaldizulfah@gmail.com</span>
-        </a>
+<section class="section contact-section">
+  <div class="wrap contact-wrap">
+    <p class="eyebrow">./contact --now</p>
+    <h1>Let's talk.</h1>
+    <p class="text-soft contact-sub">If you're screening for an AI Engineer or AI Software Engineer role, I'd like to hear from you. One message is all it takes.</p>
+
+    <form id="contact-form" class="contact-form" action="https://formspree.io/f/xxxxxxxx" method="POST">
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
       </div>
-      <div class="secondary-links">
-        <a href="https://github.com/Shoryuuuuuuu" target="_blank" rel="noopener">GitHub</a>
-        <span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/achmad-rivaldi-zulfah-788bb1218/" target="_blank" rel="noopener">LinkedIn</a>
-        <span class="sep">·</span>
-        <a href="assets/CV-Achmad-Rivaldi-Zulfah.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+      <div class="form-row">
+        <label for="email">Your email</label>
+        <input type="email" id="email" name="email" required>
       </div>
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell me about the role or what you'd like to discuss."></textarea>
+      </div>
+      <button type="submit" id="submit-btn">Send message</button>
+      <p id="form-status" role="status"></p>
+    </form>
+
+    <p class="divider-label">or reach me directly</p>
+
+    <div class="contact-options">
+      <a href="https://wa.me/6281281229084" target="_blank" rel="noopener" class="contact-card">
+        <span class="meta-label">WhatsApp</span>
+        <span class="contact-value">+62 812-8122-9084</span>
+      </a>
+      <a href="mailto:achmadrivaldizulfah@gmail.com" class="contact-card">
+        <span class="meta-label">Email</span>
+        <span class="contact-value">achmadrivaldizulfah@gmail.com</span>
+      </a>
     </div>
-  </section>
+
+    <div class="secondary-links">
+      <a href="https://github.com/Shoryuuuuuuu" target="_blank" rel="noopener">GitHub</a>
+      <span class="sep">·</span>
+      <a href="https://www.linkedin.com/in/achmad-rivaldi-zulfah-788bb1218/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="sep">·</span>
+      <a href="assets/CV-Achmad-Rivaldi-Zulfah.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </div>
+  </div>
+</section>
 </main>
+
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <span>Achmad Rivaldi — 2026</span>
     <a href="https://github.com/Shoryuuuuuuu" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
 </footer>
+
 <script src="js/main.js"></script>
+<script>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  const btn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    const data = new FormData(form);
+    status.textContent = 'Sending…';
+    status.style.color = '';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        status.textContent = "Thanks — message sent. I'll reply by email soon.";
+        status.style.color = '#10B981';
+        form.reset();
+      } else {
+        status.textContent = 'Something went wrong. Try WhatsApp/email below instead.';
+        status.style.color = 'crimson';
+      }
+    } catch (err) {
+      status.textContent = 'Network error. Try WhatsApp/email below instead.';
+      status.style.color = 'crimson';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+
 </body>
 </html>
